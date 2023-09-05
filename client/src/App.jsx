@@ -1,14 +1,14 @@
-import React,{useEffect,useState} from 'react'
+import React, { useEffect, useState } from 'react'
 
 function App() {
 
-  const [backendData,setBackendData] = useState([{}])
+  const [backendData, setBackendData] = useState([{}])
 
   useEffect(() => {
     fetch("/api").then(
       response => response.json()
     ).then(
-      data =>{
+      data => {
         setBackendData(data)
       }
     )
@@ -17,8 +17,8 @@ function App() {
   return (
     <div>{(typeof backendData.users === 'undefined') ? (
       <p>Loading ...</p>
-    ):(
-      backendData.users.map((user,i)=>(
+    ) : (
+      backendData.users.map((user, i) => (
         <p key={i}>{user}</p>
       ))
     )}
