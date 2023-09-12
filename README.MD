@@ -7,7 +7,7 @@ Codeverse (PLACEHOLDER) es un proyecto que busca consolidar el desarrollo profes
 - [Coding Standards](#coding-standards)
   - [Legacy Code](#legacy-code)
   - [File Naming](#file-naming)
-  - [Variable Naming](#variable-naming)
+  - [Variable and Function Naming](#Variable-and-Function-Naming)
   - [Indentation](#indentation)
   - [Commenting](#commenting)
 - [Contributing](#contributing)
