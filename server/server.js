@@ -2,12 +2,12 @@ const express = require("express");
 const { exec } = require("child_process");
 const fs = require("fs");
 
-class PythonRunner {
+class Server {
   constructor() {
     this.app = express();
     this.port = 5000;
 
-    this.app.get("/api", this.handleApiRequest.bind(this));
+    this.app.get("/api", this.doPythonCompilation.bind(this));
 
     this.app.listen(this.port, () => {
       console.log(`Server is listening on port ${this.port}`);
@@ -15,7 +15,7 @@ class PythonRunner {
     });
   }
 
-  handleApiRequest(req, res) {
+  doPythonCompilation(req, res) {
     try {
       const pythonCode = 'print("hola\\n4")';
 
@@ -38,4 +38,4 @@ class PythonRunner {
   }
 }
 
-new PythonRunner();
+new Server();
