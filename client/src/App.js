@@ -3,7 +3,6 @@ import React,{useEffect,useState} from 'react'
 import CodeMirrorComponent from './codemirrorComponent';
 
 function App() {
-
   const [backendData,setBackendData] = useState([{}])
 
   //Pruebas para la api
@@ -28,6 +27,11 @@ function App() {
     })
   }
 
+  const handleCodeChange = (newCode) => {
+    setTextCode(newCode);
+  };
+
+
   useEffect(() => {
     fetch("/api").then(
       response => response.json()
@@ -48,21 +52,12 @@ function App() {
     )}
       <div>
           <form onSubmit={handleForm}>
-            {/* <input type="text" name='texto' onChange={e=>setTextCode(e.target.value)}/> */}
-            <label>
-              Escribe tu codigo aqui:
-              <textarea
-                name='texto'
-                value={textCode}
-                onChange={e => setTextCode(e.target.value)}
-              />
-            </label>
             <input type="submit" value="api post"/> 
           </form>
       </div>
 
       <div className="App">
-        <CodeMirrorComponent />
+        <CodeMirrorComponent defaultCode={"ola\neste es un codigo de codemirror 2"} onCodeChange={handleCodeChange} />
       </div>
     </div>
     

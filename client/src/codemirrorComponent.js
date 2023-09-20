@@ -9,29 +9,29 @@ class CodeMirrorComponent extends Component {
     constructor(props) {
         super(props);
         this.editorContainer = React.createRef();
-        }
+    }
 
   componentDidMount() {
-    // Configura el editor de CodeMirror
+    // Configurar el editor de CodeMirror
     const editor = CodeMirror(this.editorContainer.current, {
-      //mode: 'python', // Establece el lenguaje del editor (puedes cambiarlo)
-      theme: 'ambiance', // Establece el tema (puedes cambiarlo)
-      lineNumbers: true, // Muestra números de línea
+      //mode: 'python', // Establecer el lenguaje del editor
+      theme: 'ambiance', //Tema CSS
+      lineNumbers: true,
     });
 
     //Establecer un texto por defecto
-    editor.setValue("function ola como estamos gente\n return ola");
+    editor.setValue(this.props.defaultCode);
 
     // Configura un evento para manejar cambios en el contenido del editor
     editor.on('change', (cm) => {
+
       // Accede al contenido actual del editor con cm.getValue()
-      //const code = cm.getValue();
-      // Puedes hacer algo con el código aquí, como guardarlo en el estado del componente.
+      const code = cm.getValue();
+      this.props.onCodeChange(code);
     });
   }
 
   render() {
-    // <textarea ref={(textarea) => (this.textarea = textarea)} />
     return (
       <div>
         {/* <textarea ref={(textarea) => (this.textarea = textarea)} /> */}
