@@ -36,39 +36,45 @@ const App = () => {
   }, [selectedLanguage]);
 
   return (
-    <>
+    <div className='main'>
       {/* Agregar un menú desplegable para seleccionar el lenguaje */}
-      <select
-        value={selectedLanguage}
-        onChange={(e) => setSelectedLanguage(e.target.value)}>
-        {languageOptions.map((language) => (
-          <option key={language} value={language}>
-            {language}
-          </option>
-        ))}
-      </select>
-
-      <button onClick={handleSave} >Save</button>
-
-
-      <div className='editor-container'>
-        {/* Agregar el editor Monaco */}
-        <Editor
-          height='97.5vh'
-          theme='vs-dark'
-          defaultLanguage='javascript'
-          Language={selectedLanguage}
-          defaultValue="// Escribe tu código aquí"
-          value={content}
-          onChange={(value) => setContent(value)}
-          onMount={handleEditorDidMount}
-        />
-        <div className='ouput-container'>
-          <h2>Output:</h2>
+      <div className='left-container'>
+        <div div className='editor-btn-container'>
+          <select id='LanguageSelect' className='lenguage-select'
+            value={selectedLanguage}
+            onChange={(e) => setSelectedLanguage(e.target.value)}>
+            {languageOptions.map((language) => (
+              <option className='lenguage-option' key={language} value={language}>
+                {language}
+              </option>
+            ))}
+          </select>
+          <button id='saveBtn' className='save-btn' onClick={handleSave} > > </button>
+        </div>
+        <div className='editor-container'>
+          {/* Agregar el editor Monaco */}
+          <Editor
+            height='80vh'
+            width='40vw'
+            theme='vs-dark'
+            defaultLanguage='javascript'
+            Language={selectedLanguage}
+            defaultValue="// Escribe tu código aquí"
+            value={content}
+            onChange={(value) => setContent(value)}
+            onMount={handleEditorDidMount}
+          />
+        </div>
+      </div>
+      <div className='right-container'>
+        <div className='header-container'>
+        </div>
+        <div className='output-container'>
+          <h3><strong>Output:</strong></h3>
           <pre>{content}</pre>
         </div>
       </div>
-    </>
+    </div>
   )
 }
 export default App
