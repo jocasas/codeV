@@ -1,13 +1,10 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { ParticlesBackground } from '../../components/ParticleBg/ParticlesBackground'
 
 const App = () => {
     return (
-        <div>Este es el login
-            <hr />
-            <Link to='/editor'>Editor</Link>
-            <hr />
-            <Link to='/'>Home</Link>
+        <div>
+            <ParticlesBackground />
         </div>
     )
 }

@@ -1,5 +1,6 @@
 import Editor from '@monaco-editor/react';
 import { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import './App.css'
 
 const languageOptions = [
@@ -32,8 +33,10 @@ const App = () => {
         if (window.monaco && window.monaco.editor) {
             // Obtener el editor actual
             const editor = window.monaco.editor.getModels()[0];
-            // Actualizar el lenguaje del editor Monaco
-            window.monaco.editor.setModelLanguage(editor, selectedLanguage);
+            if (editor) {
+                // Asegurarse de que el editor exista antes de intentar cambiar el lenguaje
+                window.monaco.editor.setModelLanguage(editor, selectedLanguage);
+            }
         }
     }, [selectedLanguage]);
 
@@ -65,6 +68,7 @@ const App = () => {
             {/* Agregar un menú desplegable para seleccionar el lenguaje */}
             <div className='left-container'>
                 <div div className='editor-btn-container'>
+                    <Link to='/'>Home</Link>
                     <select id='LanguageSelect' className='lenguage-select'
                         value={selectedLanguage}
                         onChange={(e) => setSelectedLanguage(e.target.value)}>
@@ -85,7 +89,7 @@ const App = () => {
                         className='overflow-hidden'
                         defaultLanguage='javascript'
                         Language={selectedLanguage}
-                        value={content}
+                        value={content.toString()}
                         onChange={(value) => setContent(value)}
                         onMount={handleEditorDidMount}
                     />

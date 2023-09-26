@@ -1,14 +1,17 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Navbar } from '../../components/Navbar/Navbar'
+import './App.css'
+import { ParticlesBackground } from '../../components/ParticleBg/ParticlesBackground'
 
 const App = () => {
     return (
-        <div>Este es el home
-            <hr />
-            <Link to='/editor'>Editor</Link>
-            <hr />
-            <Link to='/login'>Login</Link>
-        </div>
+        <>
+            <ParticlesBackground />
+            <div className='App'>
+                <Navbar />
+            </div>
+
+        </>
     )
 }
 
