@@ -8,23 +8,13 @@ function LoginUser() {
             <div class="dots"></div>
             <div className="wrapper">
                 <Metaballs
-                    numMetaballs={120}
+                    numMetaballs={100}
                     minRadius={3}
-                    maxRadius={7.5}
-                    speed={3}
-                    color="#b1376c"
-                    backgroundColor="#00121212"
-                    interactive="canvas"
-                    className="metaball-layout"
-                />
-                <Metaballs
-                    numMetaballs={20}
-                    minRadius={3}
-                    maxRadius={7.5}
-                    speed={3}
-                    color="#152a8e"
-                    backgroundColor="#00121212"
-                    interactive="canvas"
+                    maxRadius={10.4}
+                    speed={1}
+                    color="#701616"
+                    backgroundColor="#12121200"
+                    interactive="window"
                     className="metaball-layout"
                 />
                 <div className="terminalLogin">

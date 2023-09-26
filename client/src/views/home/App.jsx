@@ -8,6 +8,8 @@ const App = () => {
             <Link to='/editor'>Editor</Link>
             <hr />
             <Link to='/login'>Login</Link>
+            <hr />
+            <Link to='/loginParticles'>LoginParticulas</Link>
         </div>
     )
 }
