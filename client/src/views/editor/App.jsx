@@ -13,9 +13,7 @@ const App = () => {
     const [selectedLanguage, setSelectedLanguage] = useState('javascript');
     // Agregar un estado para el código
     const [content, setContent] = useState('// Escribe tu código aquí\n\n');
-    // Agregar una referencia al editor Monaco
-    // una referencia es un objeto que contiene una propiedad actual
-    // que se puede actualizar y que persiste durante toda la vida útil del componente
+    
     const editorRef = useRef(null);
 
     const handleEditorDidMount = (editor, monaco) => {
