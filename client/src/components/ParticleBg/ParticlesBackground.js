@@ -8,15 +8,9 @@ export const ParticlesBackground = () => {
     async function load(main) {
         await loadFull(main);
     }
-    return (
-        <div className='App'>
-            <Particles
-                init={load}
-                id="particles"
-                options={particlesConfig}
-            />
-        </div>
-    )
+    return <Particles init={load} options={particlesConfig} />
+
+
 }
 
 

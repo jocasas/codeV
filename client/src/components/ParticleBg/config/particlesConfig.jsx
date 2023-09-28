@@ -5,6 +5,10 @@ const particlesConfig =
             value: "#000000",
         },
     },
+    fullScreen: {
+        enable: false,
+        zIndex: -100
+    },
     fpsLimit: 120,
     interactivity: {
         events: {
@@ -56,18 +60,14 @@ const particlesConfig =
             },
             value: 80,
         },
-        fullScreen: {
-            enable: false,
-            zIndex: -100
-        },
         opacity: {
-            value: 0.5,
+            value: 1,
         },
         shape: {
             type: "circle",
         },
         size: {
-            value: { min: 1, max: 5 },
+            value: { min: 1, max: 2 },
         },
     },
     detectRetina: true,
