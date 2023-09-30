@@ -26,40 +26,88 @@
   top:0;
   left:0;
 }
-.terminalLogin{
-  position: absolute;
+
+.form {
+  z-index: 15;
+  position: relative;
+  background: #ffffff;
+  width: 600px;
+  border-radius: 4px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  margin: 100px auto 10px;
+  overflow: hidden;
+}
+
+.form-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 0 0 20px;
+}
+.form-group:last-child {
+  margin: 0;
+}
+.form-group label {
   display: block;
-  margin-top: 20vh;
-  margin-left: 20rem;
-  margin-right: auto;
-  display: flex;
-    font-family: "Microsoft Sans Serif", sans-serif;
-    background: #c2c6ca;
-    font-size: 12px;
-    -webkit-font-smoothing: none;
-    width: 265px;
-    height: 118px;
-    box-shadow: 0.5px 0.5px 0 0.5px black, inset 1px 1px #C2C6CA, inset -1px -1px #85898d, inset 2px 2px white;
+  margin: 0 0 10px;
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
 }
-.barrita{
-  display: flex;
-    flex-flow: row nowrap;
-    font-weight: bold;
-    justify-content: space-between;
-    width: calc(100% - 11px);
-    height: 13px;
-    color: white;
-    background: #00a;
-    padding: 2px 3px 3px;
-    margin: 3px 2px 1px 3px;
+.form-group input {
+  outline: none;
+  display: block;
+  background: rgba(0, 0, 0, 0.1);
+  width: 100%;
+  border: 0;
+  border-radius: 4px;
+  box-sizing: border-box;
+  padding: 12px 20px;
+  color: rgba(0, 0, 0, 0.6);
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 500;
+  line-height: inherit;
+  transition: 0.3s ease;
 }
-.bottonX{
-  width: 15px;
-  height: 13px;
-  
+.form-group input:focus {
+  color: rgba(0, 0, 0, 0.8);
 }
-
-.sectionBlock{
+.form-group button {
+  outline: none;
+  background: #000000;
+  width: 100%;
+  border: 0;
+  border-radius: 4px;
+  padding: 12px 20px;
+  color: #FFFFFF;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 500;
+  line-height: inherit;
+  text-transform: uppercase;
+}
+.form-group .form-remember input {
   display: inline-block;
+  width: auto;
+  margin: 0 10px 0 0;
 }
 
+.form-panel {
+  padding: 60px calc(5% + 60px) 60px 60px;
+  box-sizing: border-box;
+}
+.form-panel.two {
+  z-index: 5;
+  position: absolute;
+  top: 0;
+  left: 93%;
+  background: #292B2F;
+  width: 100%;
+  min-height: 100%;
+  padding: 60px calc(10% + 60px) 60px 60px;
+}
