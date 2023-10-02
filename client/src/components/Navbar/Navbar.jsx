@@ -19,7 +19,7 @@ export function Navbar() {
     const theme = useMantineTheme('dark');
 
     return (
-        <Box pb={120} theme={theme} className={classes.box} >
+        <Box theme={theme} className={classes.box} >
             <header className={classes.header}>
                 <Group justify="space-between" h="100%">
                     <Link to='/' className={classes.logo_link}>
