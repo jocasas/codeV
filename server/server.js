@@ -6,18 +6,24 @@ class Server {
   constructor() {
     this.app = express();
     this.port = 5000;
+    this.app.use(express.json())
 
-    this.app.get("/api", this.doPythonCompilation.bind(this));
+    this.app.post("/api", this.doPythonCompilation.bind(this));
 
-    this.app.listen(this.port, () => {
-      console.log(`Server is listening on port ${this.port}`);
-      console.log(`Visit http://localhost:${this.port}/api`);
-    });
+    if (process.env.NODE_ENV !== 'test') {
+       this.app.listen(this.port, () => {
+            console.log(`Server is listening on port ${this.port}`);
+            console.log(`Visit http://localhost:${this.port}/api`);
+        })
+     } 
   }
 
   doPythonCompilation(req, res) {
+    if (process.env.NODE_ENV !== 'test'){
+    console.log('Recieved [GET] request at /api')
+    }
     try {
-      const pythonCode = 'print("hola\\n4")';
+      const pythonCode = req.body.code;
 
       // Write the Python code to a temporary file
       fs.writeFileSync("temp.py", pythonCode);
@@ -28,8 +34,10 @@ class Server {
         if (error) {
           res.status(500).json({ error: error.message });
         } else {
+          if (process.env.NODE_ENV !== 'test'){
           console.log(stdout);
-          res.json({ result: stdout });
+          }
+          res.status(200).json({ result: stdout });
         }
       });
     } catch (error) {
@@ -39,3 +47,4 @@ class Server {
 }
 
 new Server();
+module.exports = Server;
