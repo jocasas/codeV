@@ -4,13 +4,13 @@ import { Link } from 'react-router-dom';
 import './App.css'
 
 const languageOptions = [
-    'javascript',
     'python',
+    'javascript',
 ]
 
 const App = () => {
     // Agregar un estado para el lenguaje seleccionado
-    const [selectedLanguage, setSelectedLanguage] = useState('javascript');
+    const [selectedLanguage, setSelectedLanguage] = useState('python');
     // Agregar un estado para el código
     const [content, setContent] = useState('// Escribe tu código aquí\n\n');
     
@@ -22,8 +22,30 @@ const App = () => {
 
     const handleSave = () => {
         const content = editorRef.current.getValue();
+        // Send a POST request to your Express server
+        fetch('/api', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: content, // Convert data to JSON format
+            }).then(response => {
+                if (!response.ok) {
+                  throw new Error('Network response was not ok');
+                }
+                return response.json();
+              })
+              .then(content => {
+                // Handle the response data here
+                console.log(content);
+              })
+              .catch(error => {
+                // Handle errors here
+                console.error('There was a problem with the POST request:', error);
+              });
+
         console.log(content);
-    }
+    };    
 
     // Agregar un efecto secundario para actualizar el lenguaje del editor Monaco
     useEffect(() => {
@@ -85,7 +107,7 @@ const App = () => {
                         width='100%'
                         theme='vs-dark'
                         className='overflow-hidden'
-                        defaultLanguage='javascript'
+                        defaultLanguage='python'
                         Language={selectedLanguage}
                         value={content.toString()}
                         onChange={(value) => setContent(value)}
