@@ -1,8 +1,9 @@
 /**
- * @name Interpreter
+ * @name PyInterpreter
  * @type Unitario
+ * @class Test de Ambiente
  * @author josepablo
- * Check | El interpretador de python este instalado
+ * Check | El interpretador de python este instalado en el equipo
  * @param {any} 'supertest'
  * @returns {any}
  */
@@ -19,21 +20,21 @@ test("Python interpreter name is valid", () => {
 
 function getPythonInterpreterName() {
   try {
-    // Use 'py -c "import sys; print(sys.executable)"' for Windows
+    // WINDOWS ||'py -c "import sys; print(sys.executable)"'
     if (process.platform === "win32") {
       const fullExecutablePath = execSync(
         'py -c "import sys; print(sys.executable)"',
         { encoding: "utf-8" }
       ).trim();
       const baseName = path.basename(fullExecutablePath); // Extract just the executable name
-      return baseName.replace(/\.exe$/, ""); // Remove the ".exe" extension
+      return baseName.replace(/\.exe$/, ""); // Remove ".exe" extension from name
     }
-    // Use 'python3 -c "import sys; print(sys.executable)"' for Unix-based systems
+    // UNIX || 'python3 -c "import sys; print(sys.executable)"'
     const fullExecutablePath = execSync(
       'python3 -c "import sys; print(sys.executable)"',
       { encoding: "utf-8" }
     ).trim();
-    const baseName = path.basename(fullExecutablePath); // Extract just the executable name
+    const baseName = path.basename(fullExecutablePath); // Same as the one above
     return baseName;
   } catch (error) {
     return "";

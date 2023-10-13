@@ -1,8 +1,9 @@
 /**
- * @name Jest
+ * @name JestConf
  * @type Unitario
+ * @Class Test de Ambiente
  * @author josepablo
- * Check | Jest esta configurado
+ * Check | Jest esta configurado en el equipo
  * @param {any} 'Jest Config Test'
  * @param {any} (
  * @returns {any}
