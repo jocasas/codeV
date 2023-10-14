@@ -4,6 +4,7 @@ import Editor from './views/editor/App'
 import Home from './views/home/App'
 import Login from './views/login/App'
 import LoginParticles from './views/loginParticles/loginParticles'
+import ForumUser from './views/forumUser/forumUserSide'
 import { Provider } from 'react-redux';
 import store from './store';
 
@@ -16,6 +17,7 @@ const App = () => {
           <Route path='/editor' element={<Editor />} />
           <Route path='/login' element={<Login />} />
           <Route path='/loginParticles' element={<LoginParticles />} />
+          <Route path='/forumUser' element={<ForumUser/>}/>
         </Routes>
       </Provider>
     </div>
