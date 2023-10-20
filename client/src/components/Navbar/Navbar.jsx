@@ -38,6 +38,12 @@ export function Navbar() {
                         <Link to='#!' className={classes.link}>
                             Nosotros
                         </Link>
+                        <Link to='#!' className={classes.link}>
+                            Buscar Proyectos
+                        </Link>
+                        <Link to='#!' className={classes.link}>
+                            Ranking
+                        </Link>
                     </Group>
                     <Group visibleFrom="sm">
                         <Link to='/login'><Button variant="default">Log in</Button></Link>
@@ -67,6 +73,12 @@ export function Navbar() {
                     </Link>
                     <Link to='#!' className={classes.link}>
                         Nosotros
+                    </Link>
+                    <Link to='#!' className={classes.link}>
+                        Buscar Proyectos
+                    </Link>
+                    <Link to='#!' className={classes.link}>
+                        Ranking
                     </Link>
                     <Divider my="sm" />
                     <Group justify="center" grow pb="xl" px="md">
