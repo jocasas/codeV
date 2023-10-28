@@ -1,0 +1,12 @@
+[
+  {
+    "id": 1,
+    "user": "juan",
+    "pass": "$2b$10$6B4FtnwQFngI5QByHI3ypOzxwTlnPB3ZSTGgZeVuumWO/NWWE57Sq"
+  },
+  {
+    "id": 2,
+    "resUser": "juanito",
+    "pass": "$2b$10$6B4FtnwQFngI5QByHI3ypOzxwTlnPB3ZSTGgZeVuumWO/NWWE57Sq"
+  }
+]
