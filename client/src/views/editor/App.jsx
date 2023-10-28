@@ -124,7 +124,7 @@ const App = () => {
           <h3>
             <strong>Output:</strong>
           </h3>
-          <pre>{result}</pre>
+          <pre className="output">{result}</pre>
         </div>
       </div>
     </div>
