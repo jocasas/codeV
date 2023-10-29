@@ -3,7 +3,13 @@ const { exec } = require("child_process");
 const fs = require("fs"); //Libreria fs para manejar datos en json
 const cors = require("cors");
 const bcrypt = require("bcrypt"); //para encriptar la contraseña | npm install bcrypt
+const dotenv = require('dotenv');//para el archivo .env
+const jwt = require('jsonwebtoken');//Para el token de inicio de sesion del usuario
 
+//Recoger .env
+dotenv.config();
+//Para crear el token que almacene en .env
+//console.log(require('crypto').randomBytes(64).toString('hex'))
 class Server {
   constructor() {
     this.app = express();
@@ -14,7 +20,7 @@ class Server {
     this.app.post("/api", this.doPythonCompilation.bind(this));
     this.app.post("/apiLogin", this.loginUser.bind(this));
     this.app.post("/apiRegister", this.registerUser.bind(this));
-    //this.app.post("/apiRegister", this.nombreFuncion)
+    this.app.get("/apiGetUser",this.getUser.bind(this))
 
     if (process.env.NODE_ENV !== "test") {
       this.app.listen(this.port, () => {
@@ -24,73 +30,96 @@ class Server {
     }
   }
 
+  getUser(req, res){
+    const authHeader = req.headers['authorization'];
+    const token = authHeader && authHeader.split(' ')[1];
+
+    if (token == null) return res.sendStatus(401); // si no hay token, devuelve un error 401
+
+    jwt.verify(token, process.env.TOKEN_SECRET, (err, user) => {
+        if (err) return res.sendStatus(403); // si el token es inválido, devuelve un error 403
+
+        let userData = user.username;
+
+        //req.user = user;
+
+        res.status(200).send({ message: 'Se rescato la informacion del usuario', userData });
+        
+        // Aquí puedes buscar al usuario en tu base de datos con la información en 'user'
+        // y luego devolver la información del usuario
+    });
+  }
+
   loginUser(req, res) {
     let logUser = req.body.user;
     let logPass = req.body.password;
+    console.log("usuario " + logUser + " contraseña "+ logPass);
 
-    const dataFilePath = "data/users.json";
-
+    const dataFilePath = 'data/users.json';
+    
     //var fs = require('fs');//Usar la libreria fs para manejar datos en json
     let usersData = [];
 
-    try {
-      usersData = JSON.parse(fs.readFileSync(dataFilePath, "utf8"));
-    } catch (error) {
+    try{
+      usersData = JSON.parse(fs.readFileSync(dataFilePath, 'utf8'));
+    } catch(error){
       console.log("error al manejar el json");
       return res.status(500).send("error en el inicio de sesion");
     }
 
-    const userRecord = usersData.find(
-      (usersData) => usersData.user === logUser
-    );
+    const userRecord = usersData.find((usersData) => usersData.user === logUser);
 
     if (!userRecord) {
       return res.status(401).send("datos invalidos");
     }
-
+    
     //Comparar la contraseña con el hash almacenado
     bcrypt.compare(logPass, userRecord.pass, (err, result) => {
       if (err || !result) {
         return res.status(401).send("datos invalidos");
       }
 
-      //Aqui el inicio de sesion fue exitoso, si hacemos un token lo creamos aqui
-      //creo
+      //Como el inicio de sesion fue exitoso, crear el token
+      const secretToken = process.env.TOKEN_SECRET;
+      const userData = {
+        // Datos necesarios para el usuario de manera local
+        username: logUser
+      };
 
-      res.status(200).send("inicio de sesion exitoso");
+      const token = jwt.sign(userData, secretToken);
+      //Devolver un status 200, junto a un mensaje (porsiacaso) y el token que almacenara el usuario
+      res.status(200).send({ message: 'Inicio de sesión exitoso', accessToken: token });
     });
   }
 
   registerUser(req, res) {
     let resUser = req.body.user;
     let resPass = req.body.password;
-    console.log("user: " + resUser + " pass: " + resPass);
-    const dataFilePath = "data/users.json";
 
+    const dataFilePath = 'data/users.json';
+    
     //var fs = require('fs');//Usar la libreria fs para manejar datos en json
-
+  
     let id = 1;
     let usersData = [];
-
+    
     //Cargar los usuarios del json
-    try {
-      usersData = JSON.parse(fs.readFileSync(dataFilePath, "utf8"));
-    } catch (error) {
+    try{
+      usersData = JSON.parse(fs.readFileSync(dataFilePath, 'utf8'));
+    } catch (error){
       console.log("error al manejar el json");
       return res.status(500).send("error al registrar el usuario");
     }
-
+    
     //Verificamos si el usuario ya existe
-    const existingUser = usersData.find(
-      (usersData) => usersData.user === resUser
-    );
+    const existingUser = usersData.find((usersData) => usersData.user === resUser);
     if (existingUser) {
       return res.status(400).send("El usuario ya existe");
     }
-
+    
     //Genero un hash para encriptar la contraseña antes de almacenarla
     //Si es existoso, se guarda directamente
-    const saltRounds = 10; //numero de rondas para el hashing
+    const saltRounds = 10;//numero de rondas para el hashing
 
     bcrypt.hash(resPass, saltRounds, (err, hash) => {
       if (err) {
@@ -99,18 +128,14 @@ class Server {
       }
 
       //Guardar el usuario
-      id = usersData.length + 1; //crearle un id
-      const newUser = { id, resUser, pass: hash };
+      id = usersData.length + 1;//crearle un id
+      const newUser = { id, user: resUser, pass: hash};
       usersData.push(newUser);
 
       //Guardar los datos en el archivo
-      fs.writeFileSync(
-        dataFilePath,
-        JSON.stringify(usersData, null, 2),
-        "utf8"
-      );
+      fs.writeFileSync(dataFilePath, JSON.stringify(usersData, null, 2), 'utf8');
 
-      res.status(200).send("Usuario registrado");
+      res.status(200).send('Usuario registrado');
     });
   }
 
