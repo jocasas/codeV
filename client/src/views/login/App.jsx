@@ -16,6 +16,7 @@ const App = () => {
 
       if (response.status === 200) {
         console.log("Se logueo al usuario");
+        console.log("token supersecreto: "+response.data.accessToken)
       } else {
         console.error("Error al iniciar sesion");
       }

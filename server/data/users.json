@@ -8,5 +8,10 @@
     "id": 2,
     "resUser": "juanito",
     "pass": "$2b$10$6B4FtnwQFngI5QByHI3ypOzxwTlnPB3ZSTGgZeVuumWO/NWWE57Sq"
+  },
+  {
+    "id": 3,
+    "user": "pepe",
+    "pass": "$2b$10$GNUJ7p5wpW6a7.jA5NcuquRCYY1n3R2Zh72DuLeC1kc1aEHkkrzIa"
   }
 ]
