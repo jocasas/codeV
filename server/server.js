@@ -21,6 +21,7 @@ class Server {
     this.app.post("/apiLogin", this.loginUser.bind(this));
     this.app.post("/apiRegister", this.registerUser.bind(this));
     this.app.get("/apiGetUser",this.getUser.bind(this))
+    this.app.get("/apiGetExercise",this.getExercise.bind(this))
 
     if (process.env.NODE_ENV !== "test") {
       this.app.listen(this.port, () => {
@@ -44,9 +45,6 @@ class Server {
         //req.user = user;
 
         res.status(200).send({ message: 'Se rescato la informacion del usuario', userData });
-        
-        // Aquí puedes buscar al usuario en tu base de datos con la información en 'user'
-        // y luego devolver la información del usuario
     });
   }
 
@@ -145,8 +143,8 @@ class Server {
     }
     try {
       const pythonCode = req.body.code;
-
-      // Write the Python code to a temporary file
+      
+      //Escribir el codigo de python en un archivo temporal
       fs.writeFileSync("temp.py", pythonCode);
 
       exec(`python temp.py`, (error, stdout, stderr) => {
@@ -164,6 +162,35 @@ class Server {
     } catch (error) {
       res.status(500).json({ error: error.message });
     }
+  }
+
+  getExercise(req, res){
+    const language = req.query.language;
+    const difficult = parseInt(req.query.difficult);//El valor al ser pasado quedo como un str
+
+    const dataFilePath = "data/exercises.json";
+    let exDatas = []
+
+    //Cargar todos los ejercicios del json
+    try {
+      exDatas = JSON.parse(fs.readFileSync(dataFilePath, "utf8"));
+    } catch (error) {
+      return res.status(500).send("error al rescatar los ejercicios");
+    }
+
+    // Filtramos los ejercicios por lenguaje
+    let exLanguage = exDatas.filter((exDatas) => exDatas.idLenguaje === language);//Si utilizamos el mismo array sin declarar uno nuevo da error y queda vacio
+    exDatas = null;
+    //Filtramos los ejercicios ahora por la dificultad
+    let exDiff = exLanguage.filter((exLanguage) => exLanguage.dificultad === difficult);
+    exLanguage = null;
+
+    //Ahora se selecciona un ejercicio al azar
+    const exData = exDiff[Math.floor(Math.random() * exDiff.length)];
+    console.log("Data random "+JSON.stringify(exData))
+
+    //Devolver el ejercicio
+    res.status(200).send({ message: "Se rescato el ejercicio", exercise: exData });
   }
 }
 

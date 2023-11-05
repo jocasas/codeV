@@ -50,6 +50,20 @@ const App = () => {
         window.monaco.editor.setModelLanguage(editor, selectedLanguage);
       }
     }
+
+    axios.get("http://localhost:5000/apiGetExercise", {
+      params: {
+        language: "python"/* selectedLanguage */, 
+        difficult: 1
+      }
+    }).then((response) => {
+        // Maneja la respuesta aquí
+        console.log(JSON.stringify(response.data.exercise));
+        setContent(response.data.exercise.desarrollo);
+    }).catch((error) => {
+        // Maneja el error aquí
+    });
+
   }, [selectedLanguage]);
 
   // Save a reference to the original ResizeObserver
