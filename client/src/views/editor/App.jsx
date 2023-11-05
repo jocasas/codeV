@@ -51,9 +51,10 @@ const App = () => {
       }
     }
 
+    //Recoger un ejercicio al azar filtrando por el lenguaje y la dificultad
     axios.get("http://localhost:5000/apiGetExercise", {
       params: {
-        language: "python"/* selectedLanguage */, 
+        language: selectedLanguage, 
         difficult: 1
       }
     }).then((response) => {
@@ -63,7 +64,6 @@ const App = () => {
     }).catch((error) => {
         // Maneja el error aquí
     });
-
   }, [selectedLanguage]);
 
   // Save a reference to the original ResizeObserver

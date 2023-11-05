@@ -3,6 +3,7 @@ import { ParticlesBackground } from "../../components/ParticleBg/ParticlesBackgr
 import axios from "axios";
 
 const App = () => {
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     var { username, password } = document.forms[0];
@@ -17,6 +18,9 @@ const App = () => {
       if (response.status === 200) {
         console.log("Se logueo al usuario");
         console.log("token supersecreto: "+response.data.accessToken)
+        //Almacenar el token del usuario para la persistencia
+        localStorage.setItem('token', response.data.accessToken);
+
       } else {
         console.error("Error al iniciar sesion");
       }

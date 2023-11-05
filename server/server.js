@@ -81,7 +81,7 @@ class Server {
       const secretToken = process.env.TOKEN_SECRET;
       const userData = {
         // Datos necesarios para el usuario de manera local
-        username: logUser
+        id: userRecord.id,
       };
 
       const token = jwt.sign(userData, secretToken);
@@ -187,7 +187,6 @@ class Server {
 
     //Ahora se selecciona un ejercicio al azar
     const exData = exDiff[Math.floor(Math.random() * exDiff.length)];
-    console.log("Data random "+JSON.stringify(exData))
 
     //Devolver el ejercicio
     res.status(200).send({ message: "Se rescato el ejercicio", exercise: exData });
