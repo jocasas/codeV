@@ -20,10 +20,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className=' bg-neutral-900'>
-      <header className=''>
-        <Navbar />
-      </header>
-      <main className={roboto.className}>{children}</main>
+      <body className={` h-screen ${roboto.className}`}>
+        <header><Navbar /></header>
+        {children}
+      </body>
     </html>
-  )
+  );
 }
+
