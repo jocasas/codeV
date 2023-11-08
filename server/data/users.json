@@ -13,5 +13,10 @@
     "id": 3,
     "user": "pepe",
     "pass": "$2b$10$GNUJ7p5wpW6a7.jA5NcuquRCYY1n3R2Zh72DuLeC1kc1aEHkkrzIa"
+  },
+  {
+    "id": 4,
+    "user": "quesopleto@gmial.com",
+    "pass": "$2b$10$ZcXSiOopmoAXERYaN77fR.fyNVamzh5Uiya/7ILgeyDE0yZ1mFzVK"
   }
 ]
