@@ -36,7 +36,7 @@ export default function Page() {
       <div className="signin">
         <div className="content">
           <h2>Sign In</h2>
-          <a className="bg-red-900 px-2 py-1 absolute left-0 top-3 rounded-sm font-bold" href='/'>Volver</a>
+          <a className="flex w-10 h-10 px-2 py-2 absolute left-0 top-2 rounded-full font-bold" href='/'><img src="/arrowLeft.svg" alt="a" /></a>
           <form className="form" onSubmit={handleSubmit}>
             <div className="inputBox">
               <input type="text" required /> <i>Email</i>
@@ -44,7 +44,7 @@ export default function Page() {
             <div className="inputBox">
               <input type="password" required /> <i>Password</i>
             </div>
-            <div className="links"> <Link href="#">Forgot Password</Link> <Link href="#">Signup</Link>
+            <div className="links"> <Link href="#">Forgot Password</Link> <Link href="/register">Signup</Link>
             </div>
             <div className="inputBox">
               <input type="submit" value="Login" />

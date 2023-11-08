@@ -1,9 +1,12 @@
 import { ParticlesBackground } from "../Components/ParticleBg/ParticlesBackground";
 import "./page.css";
+
+
 export default function Home() {
   return (
     <div className="Main">
       <ParticlesBackground />
+      <div className="absolute bg-gradient-to-b from-black via-black to-neutral-900 w-full h-[50%]"></div>
       <div className="Slogan">Aqui va el Slogan</div>
       <div className="slide-info-1">
         <div className="card1-container">
