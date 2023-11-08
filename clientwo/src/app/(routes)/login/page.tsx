@@ -2,6 +2,8 @@
 import React, { FormEvent } from "react";
 import { ParticlesBackground } from "../../../Components/ParticleBg/ParticlesBackground";
 import axios from "axios";
+import "./login.css";
+import Link from "next/link";
 
 export default function Page() {
   const handleSubmit = async (e: { preventDefault: () => void }) => {
@@ -30,23 +32,27 @@ export default function Page() {
     }
   };
   return (
-    <div>
-      <ParticlesBackground />
-      <div className="form">
-        <form onSubmit={handleSubmit}>
-          <div className="input-container">
-            <label>Usuario</label>
-            <input type="text" name="username" required />
-          </div>
-          <div className="input-container">
-            <label>Contraseña</label>
-            <input type="password" name="password" required />
-          </div>
-          <div className="button-container">
-            <input type="submit" />
-          </div>
-        </form>
+    <section> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span>
+      <div className="signin">
+        <div className="content">
+          <h2>Sign In</h2>
+          <a className="bg-red-900 px-2 py-1 absolute left-0 top-3 rounded-sm font-bold" href='/'>Volver</a>
+          <form className="form" onSubmit={handleSubmit}>
+            <div className="inputBox">
+              <input type="text" required /> <i>Email</i>
+            </div>
+            <div className="inputBox">
+              <input type="password" required /> <i>Password</i>
+            </div>
+            <div className="links"> <Link href="#">Forgot Password</Link> <Link href="#">Signup</Link>
+            </div>
+            <div className="inputBox">
+              <input type="submit" value="Login" />
+            </div>
+          </form>
+        </div>
       </div>
-    </div>
+    </section>
+
   );
 }
