@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+#tsparticles {
+    position: relative;
+    width: 100%;
+    height: calc(100vh - 64px);
+    z-index: -1;
+}

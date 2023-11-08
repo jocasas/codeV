@@ -2,7 +2,7 @@ import { ParticlesBackground } from "../components/ParticleBg/ParticlesBackgroun
 
 export default function Home() {
   return (
-    <div>
+    <div className="w-full">
       <ParticlesBackground />
     </div>
   );
