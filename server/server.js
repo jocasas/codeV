@@ -3,8 +3,8 @@ const { exec } = require("child_process");
 const fs = require("fs"); //Libreria fs para manejar datos en json
 const cors = require("cors");
 const bcrypt = require("bcrypt"); //para encriptar la contraseña | npm install bcrypt
-const dotenv = require('dotenv');//para el archivo .env
-const jwt = require('jsonwebtoken');//Para el token de inicio de sesion del usuario
+const dotenv = require("dotenv"); //para el archivo .env
+const jwt = require("jsonwebtoken"); //Para el token de inicio de sesion del usuario
 
 //Recoger .env
 dotenv.config();
@@ -17,11 +17,17 @@ class Server {
     this.app.use(express.json());
     this.app.use(cors());
 
+    //ENDPOINTS Lenguajes
     this.app.post("/api", this.doPythonCompilation.bind(this));
+
+    //ENDPOINTS Usuario
     this.app.post("/apiLogin", this.loginUser.bind(this));
     this.app.post("/apiRegister", this.registerUser.bind(this));
-    this.app.get("/apiGetUser",this.getUser.bind(this))
-    this.app.get("/apiGetExercise",this.getExercise.bind(this))
+    this.app.get("/apiGetUser", this.getUser.bind(this));
+
+    //ENDPOINTS Ejercicios
+    this.app.get("/apiGeRandomExcercise", this.getRandomExercise.bind(this));
+    this.app.get("/apiGetAllExercises", this.getAllExercises.bind(this));
 
     if (process.env.NODE_ENV !== "test") {
       this.app.listen(this.port, () => {
@@ -31,46 +37,50 @@ class Server {
     }
   }
 
-  getUser(req, res){
-    const authHeader = req.headers['authorization'];
-    const token = authHeader && authHeader.split(' ')[1];
+  getUser(req, res) {
+    const authHeader = req.headers["authorization"];
+    const token = authHeader && authHeader.split(" ")[1];
 
     if (token == null) return res.sendStatus(401); // si no hay token, devuelve un error 401
 
     jwt.verify(token, process.env.TOKEN_SECRET, (err, user) => {
-        if (err) return res.sendStatus(403); // si el token es inválido, devuelve un error 403
+      if (err) return res.sendStatus(403); // si el token es inválido, devuelve un error 403
 
-        let userData = user.username;
+      let userData = user.username;
 
-        //req.user = user;
+      //req.user = user;
 
-        res.status(200).send({ message: 'Se rescato la informacion del usuario', userData });
+      res
+        .status(200)
+        .send({ message: "Se rescato la informacion del usuario", userData });
     });
   }
 
   loginUser(req, res) {
     let logUser = req.body.user;
     let logPass = req.body.password;
-    console.log("usuario " + logUser + " contraseña "+ logPass);
+    console.log("usuario " + logUser + " contraseña " + logPass);
 
-    const dataFilePath = 'data/users.json';
-    
+    const dataFilePath = "data/users.json";
+
     //var fs = require('fs');//Usar la libreria fs para manejar datos en json
     let usersData = [];
 
-    try{
-      usersData = JSON.parse(fs.readFileSync(dataFilePath, 'utf8'));
-    } catch(error){
+    try {
+      usersData = JSON.parse(fs.readFileSync(dataFilePath, "utf8"));
+    } catch (error) {
       console.log("error al manejar el json");
       return res.status(500).send("error en el inicio de sesion");
     }
 
-    const userRecord = usersData.find((usersData) => usersData.user === logUser);
+    const userRecord = usersData.find(
+      (usersData) => usersData.user === logUser
+    );
 
     if (!userRecord) {
       return res.status(401).send("datos invalidos");
     }
-    
+
     //Comparar la contraseña con el hash almacenado
     bcrypt.compare(logPass, userRecord.pass, (err, result) => {
       if (err || !result) {
@@ -86,7 +96,9 @@ class Server {
 
       const token = jwt.sign(userData, secretToken);
       //Devolver un status 200, junto a un mensaje (porsiacaso) y el token que almacenara el usuario
-      res.status(200).send({ message: 'Inicio de sesión exitoso', accessToken: token });
+      res
+        .status(200)
+        .send({ message: "Inicio de sesión exitoso", accessToken: token });
     });
   }
 
@@ -94,30 +106,32 @@ class Server {
     let resUser = req.body.user;
     let resPass = req.body.password;
 
-    const dataFilePath = 'data/users.json';
-    
+    const dataFilePath = "data/users.json";
+
     //var fs = require('fs');//Usar la libreria fs para manejar datos en json
-  
+
     let id = 1;
     let usersData = [];
-    
+
     //Cargar los usuarios del json
-    try{
-      usersData = JSON.parse(fs.readFileSync(dataFilePath, 'utf8'));
-    } catch (error){
+    try {
+      usersData = JSON.parse(fs.readFileSync(dataFilePath, "utf8"));
+    } catch (error) {
       console.log("error al manejar el json");
       return res.status(500).send("error al registrar el usuario");
     }
-    
+
     //Verificamos si el usuario ya existe
-    const existingUser = usersData.find((usersData) => usersData.user === resUser);
+    const existingUser = usersData.find(
+      (usersData) => usersData.user === resUser
+    );
     if (existingUser) {
       return res.status(400).send("El usuario ya existe");
     }
-    
+
     //Genero un hash para encriptar la contraseña antes de almacenarla
     //Si es existoso, se guarda directamente
-    const saltRounds = 10;//numero de rondas para el hashing
+    const saltRounds = 10; //numero de rondas para el hashing
 
     bcrypt.hash(resPass, saltRounds, (err, hash) => {
       if (err) {
@@ -126,14 +140,18 @@ class Server {
       }
 
       //Guardar el usuario
-      id = usersData.length + 1;//crearle un id
-      const newUser = { id, user: resUser, pass: hash};
+      id = usersData.length + 1; //crearle un id
+      const newUser = { id, user: resUser, pass: hash };
       usersData.push(newUser);
 
       //Guardar los datos en el archivo
-      fs.writeFileSync(dataFilePath, JSON.stringify(usersData, null, 2), 'utf8');
+      fs.writeFileSync(
+        dataFilePath,
+        JSON.stringify(usersData, null, 2),
+        "utf8"
+      );
 
-      res.status(200).send('Usuario registrado');
+      res.status(200).send("Usuario registrado");
     });
   }
 
@@ -143,7 +161,7 @@ class Server {
     }
     try {
       const pythonCode = req.body.code;
-      
+
       //Escribir el codigo de python en un archivo temporal
       fs.writeFileSync("temp.py", pythonCode);
 
@@ -164,12 +182,12 @@ class Server {
     }
   }
 
-  getExercise(req, res){
+  getRandomExercise(req, res) {
     const language = req.query.language;
-    const difficult = parseInt(req.query.difficult);//El valor al ser pasado quedo como un str
+    const difficult = parseInt(req.query.difficult); //El valor al ser pasado quedo como un str
 
     const dataFilePath = "data/exercises.json";
-    let exDatas = []
+    let exDatas = [];
 
     //Cargar todos los ejercicios del json
     try {
@@ -179,17 +197,41 @@ class Server {
     }
 
     // Filtramos los ejercicios por lenguaje
-    let exLanguage = exDatas.filter((exDatas) => exDatas.idLenguaje === language);//Si utilizamos el mismo array sin declarar uno nuevo da error y queda vacio
+    let exLanguage = exDatas.filter(
+      (exDatas) => exDatas.idLenguaje === language
+    ); //Si utilizamos el mismo array sin declarar uno nuevo da error y queda vacio
     exDatas = null;
     //Filtramos los ejercicios ahora por la dificultad
-    let exDiff = exLanguage.filter((exLanguage) => exLanguage.dificultad === difficult);
+    let exDiff = exLanguage.filter(
+      (exLanguage) => exLanguage.dificultad === difficult
+    );
     exLanguage = null;
 
     //Ahora se selecciona un ejercicio al azar
     const exData = exDiff[Math.floor(Math.random() * exDiff.length)];
 
     //Devolver el ejercicio
-    res.status(200).send({ message: "Se rescato el ejercicio", exercise: exData });
+    res
+      .status(200)
+      .send({ message: "Se rescato el ejercicio", exercise: exData });
+  }
+
+  getAllExercises(req, res) {
+    const language = req.query.language;
+    const difficult = parseInt(req.query.difficult); //El valor al ser pasado quedo como un str
+
+    const dataFilePath = "data/exercises.json";
+    let exDatas = [];
+
+    //Cargar todos los ejercicios del json
+    try {
+      exDatas = JSON.parse(fs.readFileSync(dataFilePath, "utf8"));
+    } catch (error) {
+      return res.status(500).send("error al rescatar los ejercicios");
+    }
+
+    //Devolver el ejercicio
+    res.status(200).send({ exercise: exDatas });
   }
 }
 

@@ -1,26 +1,18 @@
 [
-    {
-      "id": 1,
-      "dificultad": 1,
-      "contexto": "resuelvelo mano",
-      "desarrollo": "print('hola')",
-      "solucion": "hola",
-      "idLenguaje": "python"
-    },
-    {
-        "id": 2,
-        "dificultad": 1,
-        "contexto": "resuelvelo mano",
-        "desarrollo": "print('hola')",
-        "solucion": "hola",
-        "idLenguaje": "javascript"
-    },
-    {
-        "id": 3,
-        "dificultad": 1,
-        "contexto": "resuelvelo mano porfa",
-        "desarrollo": "print('porfa')",
-        "solucion": "porfa",
-        "idLenguaje": "python"
-    }
-  ]
+  {
+    "id": 1,
+    "dificultad": 1,
+    "contexto": "Imprime en consola 'Hola Mundo'",
+    "desarrollo": "print('hola')",
+    "solucion": "Hola Mundo",
+    "idLenguaje": "python"
+  },
+  {
+    "id": 2,
+    "dificultad": 1,
+    "contexto": "Retorna por consola un triangulo de 'n' pisos",
+    "desarrollo": "print('porfa')",
+    "solucion": "porfa",
+    "idLenguaje": "python"
+  }
+]
