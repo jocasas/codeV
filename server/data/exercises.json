@@ -1,5 +1,6 @@
 [
   {
+    "titulo": "Tu primer hola mundo",
     "id": 1,
     "dificultad": 1,
     "contexto": "Imprime en consola 'Hola Mundo'",
@@ -8,11 +9,21 @@
     "idLenguaje": "python"
   },
   {
+    "titulo": "Tu primer triangulo",
     "id": 2,
     "dificultad": 1,
     "contexto": "Retorna por consola un triangulo de 'n' pisos",
     "desarrollo": "print('porfa')",
     "solucion": "porfa",
     "idLenguaje": "python"
+  },
+  {
+    "titulo": "Tu primera consulta",
+    "id": 3,
+    "dificultad": 1,
+    "contexto": "Retorna la tabla cliente",
+    "desarrollo": "Select * from cliente;",
+    "solucion": "porfa",
+    "idLenguaje": "sql"
   }
 ]
