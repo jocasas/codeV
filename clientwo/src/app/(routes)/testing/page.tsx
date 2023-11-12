@@ -1,6 +1,7 @@
 "use client";
 import axios from "axios";
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 // `app/page.tsx` is the UI for the `/` URL
 
@@ -137,10 +138,14 @@ export default function Page() {
                     <div>
                       <div className="m-2 bg-zinc-950 p-2">
                         <p>{exercise.contexto}</p>
-                        <button className="font-bold">
+                        <Link
+                          href="/[problem]"
+                          as={"/" + exercise.id.toString()}
+                          className="font-bold"
+                        >
                           Abrir con el editor ¿{" "}
                           <span style={{ color: "#00FFFF" }}>[y/n]</span> ?
-                        </button>
+                        </Link>
                       </div>
                     </div>
                     <div>

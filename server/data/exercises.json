@@ -13,7 +13,7 @@
     "titulo": "Tu primera piramide",
     "id": 2,
     "dificultad": 1,
-    "contexto": "Nadie sabe con certeza si los egipcios de verdad construyeron las piramides ellos solos.\nAlmenos sabremo que si esta queda chueca es tuya.",
+    "contexto": "Nadie sabe con certeza si los egipcios de verdad construyeron las piramides solos.\nAlmenos sabremos que si esta queda chueca es tuya.",
     "instrucciones": "Retorna por consola una piramide de 'n' pisos",
     "desarrollo": "print('porfa')",
     "solucion": "porfa",
