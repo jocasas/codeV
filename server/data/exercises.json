@@ -3,16 +3,18 @@
     "titulo": "Tu primer hola mundo",
     "id": 1,
     "dificultad": 1,
-    "contexto": "Imprime en consola 'Hola Mundo'",
+    "contexto": "Llego la hora de dar el paso mas importante en tu vida, escribir tu primer Hello World.\n(Dicen que si no lo haces trae mala suerte)",
+    "instrucciones": "Imprime en consola 'Hola Mundo'",
     "desarrollo": "print('hola')",
     "solucion": "Hola Mundo",
     "idLenguaje": "python"
   },
   {
-    "titulo": "Tu primer triangulo",
+    "titulo": "Tu primera piramide",
     "id": 2,
     "dificultad": 1,
-    "contexto": "Retorna por consola un triangulo de 'n' pisos",
+    "contexto": "Nadie sabe con certeza si los egipcios de verdad construyeron las piramides ellos solos.\nAlmenos sabremo que si esta queda chueca es tuya.",
+    "instrucciones": "Retorna por consola una piramide de 'n' pisos",
     "desarrollo": "print('porfa')",
     "solucion": "porfa",
     "idLenguaje": "python"
@@ -21,7 +23,8 @@
     "titulo": "Tu primera consulta",
     "id": 3,
     "dificultad": 1,
-    "contexto": "Retorna la tabla cliente",
+    "contexto": "Tu primera consulta, ojala no la ultima.",
+    "Instrucciones": "Retorna la tabla cliente",
     "desarrollo": "Select * from cliente;",
     "solucion": "porfa",
     "idLenguaje": "sql"

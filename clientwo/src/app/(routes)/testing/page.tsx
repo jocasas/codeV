@@ -1,11 +1,13 @@
 "use client";
 import axios from "axios";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 // `app/page.tsx` is the UI for the `/` URL
 
 interface Exercise {
   titulo: string;
   contexto: string;
+  instrucciones: string;
   desarrollo: string;
   dificultad: number;
   id: number;
@@ -13,8 +15,41 @@ interface Exercise {
   solucion: string;
 }
 
+type AsciiArt = {
+  python: string;
+  sql: string;
+};
+
+const asciiart: AsciiArt = {
+  python: `
+              __    __                         
+             /\\ \\__/\\ \\                        
+_____   __  __\\ \\ ,_\\ \\ \\___     ___     ___    
+/\\ '__\`\\/\\ \\/\\ \\\\ \\ \\/\\ \\  _ \`\\  / __\`\\ /' _ \`\\  
+\\ \\ \\L\\ \\ \\ \\_\\ \\\\ \\ \\_\\ \\ \\ \\ \\/\\ \\L\\ \\/\\ \\/\\ \\ 
+\\ \\ ,__/\\/\\____ \\\\ \\__\\\\ \\_\\ \\_\\ \\____/\\ \\_\\ \\_\\
+\\ \\ \\/  \`/___/> \\\\/__/ \\/_/\\/_/\\/__ /  \\/_/\\/_/
+ \\ \\_\\     /\\___/                              
+\\/_/      \\/__/                             
+`,
+
+  sql: `
+  ________  ________  ___          
+  |\\   ____\\|\\   __  \\|\\  \\         
+  \\ \\  \\___|\\ \\  \\|\\  \\ \\  \\        
+   \\ \\_____  \\ \\  \\\\\\  \\ \\  \\       
+    \\|____|\\  \\ \\  \\\\\\  \\ \\  \\____  
+      ____\\_\\  \\ \\_____  \\ \\_______\\
+     |\\_________\\|___| \\__\\|_______|
+     \\|_________|     \\|__|         
+ `,
+};
+
 export default function Page() {
+  //H00KS
   const [exercises, setExercises] = useState<Exercise[]>([]);
+
+  //0N R3ND3R FUNC
   const showExercise = async () => {
     console.log("Iniciando FETCH");
     try {
@@ -29,6 +64,17 @@ export default function Page() {
       console.log("Hubo un problema en el fetch");
     }
   };
+
+  //AGRUPAR EJERCICIOS
+  const exercisesByLanguage: Record<string, Exercise[]> = {};
+  exercises.forEach((exercise) => {
+    const languageId = exercise.idLenguaje;
+    if (!exercisesByLanguage[languageId]) {
+      exercisesByLanguage[languageId] = [];
+    }
+    exercisesByLanguage[languageId].push(exercise);
+  });
+
   useEffect(() => {
     showExercise();
   }, []);
@@ -39,15 +85,23 @@ export default function Page() {
     }
   }, [exercises]);
 
-  // Agrupar ejercicios
-  const exercisesByLanguage: Record<string, Exercise[]> = {};
-  exercises.forEach((exercise) => {
-    const languageId = exercise.idLenguaje;
-    if (!exercisesByLanguage[languageId]) {
-      exercisesByLanguage[languageId] = [];
+  function getPrefixedTitle(exercise: Exercise): string {
+    const formattedTitle = exercise.titulo.replace(/\s+/g, "_");
+    const suffix = getSuffix(exercise.idLenguaje);
+    return `${formattedTitle}${suffix}`;
+  }
+
+  function getSuffix(languageId: string): string {
+    switch (languageId) {
+      case "python":
+        return ".py";
+      case "sql":
+        return ".sql";
+      // Add more cases for other languages if needed
+      default:
+        return ".txt"; // Default case, use '.txt' as suffix
     }
-    exercisesByLanguage[languageId].push(exercise);
-  });
+  }
 
   return (
     <div>
@@ -55,19 +109,48 @@ export default function Page() {
       <div className="mt-28">
         {Object.entries(exercisesByLanguage).map(([languageId, exercises]) => (
           <div className="text-gray-300" key={languageId}>
-            <h2>Language ID: {languageId}</h2>
+            <div className="text-center">
+              <pre
+                className="text-rose-600		"
+                dangerouslySetInnerHTML={{
+                  __html: asciiart[languageId as keyof AsciiArt] || "",
+                }}
+              />
+            </div>
             <ul>
               {exercises.map((exercise) => (
                 <li key={exercise.id}>
                   <div className="p-1">
-                    <h1 className="bg-lime-400 text-neutral-950">
-                      {exercise.titulo}
+                    <h1 className="bg-zinc-950 text-neutral-950">
+                      <span style={{ color: "#00ff00" }}>
+                        guest@codev.editor.com:
+                      </span>
+                      <span style={{ color: "#02198B" }}> ~</span>
+                      <span style={{ color: "#ffffff" }}>$ </span>
+                      <span style={{ color: "#ffffff" }}> cat </span>
+
+                      <span style={{ color: "#ffffff" }}>
+                        {" "}
+                        {getPrefixedTitle(exercise)}{" "}
+                      </span>
                     </h1>
-                    <div className="m-5 bg-zinc-950 p-2">
-                      <h3>Ejercicio: {exercise.contexto}</h3>
-                      <p>Desarrollo: {exercise.desarrollo}</p>
-                      <p>Dificultad: {exercise.dificultad}</p>
-                      <p>Solución: {exercise.solucion}</p>
+                    <div>
+                      <div className="m-2 bg-zinc-950 p-2">
+                        <p>{exercise.contexto}</p>
+                        <button className="font-bold">
+                          Abrir con el editor ¿{" "}
+                          <span style={{ color: "#00FFFF" }}>[y/n]</span> ?
+                        </button>
+                      </div>
+                    </div>
+                    <div>
+                      <h1 className="bg-zinc-800">Debugger | Content Inside</h1>
+                      <div className="m-2 bg-zinc-950 p-2">
+                        <h3>Ejercicio: {exercise.instrucciones}</h3>
+                        <p>Desarrollo: {exercise.desarrollo}</p>
+                        <p>Dificultad: {exercise.dificultad}</p>
+                        <p>Solución: {exercise.solucion}</p>
+                      </div>
                     </div>
                   </div>
                 </li>
