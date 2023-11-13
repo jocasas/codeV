@@ -34,7 +34,7 @@ function App() {
       </div>
       {/* New pane below the parallel panes */}
       <div className="pr-10 pl-10 flex flex-col sm:flex-row">
-        <div className="flex-1 mt-2 p-2 rounded overflow-auto bg-black text-white border-8 border-black">
+        <div className="flex-1 mt-2 pb-40 rounded overflow-auto bg-black text-white border-8 border-black">
           {/* Another div parallel to the editor */}
           <h1 className="text-gray-50 text-center">Output</h1>
           <p className="text-green-400">$ Your terminal-like text here...</p>
