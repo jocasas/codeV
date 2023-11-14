@@ -107,7 +107,7 @@ export default function Page() {
   return (
     <div className="Main">
       <div>
-        <h1>Exercise List</h1>
+        <h1>aaa</h1>
         <div className="mt-10">
           {Object.entries(exercisesByLanguage).map(
             ([languageId, exercises]) => (
@@ -150,17 +150,6 @@ export default function Page() {
                               Abrir con el editor ¿{" "}
                               <span style={{ color: "#00FFFF" }}>[y/n]</span> ?
                             </Link>
-                          </div>
-                        </div>
-                        <div>
-                          <h1 className="bg-zinc-800">
-                            Debugger | Content Inside
-                          </h1>
-                          <div className="m-2 bg-zinc-950 p-2">
-                            <h3>Ejercicio: {exercise.instrucciones}</h3>
-                            <p>Desarrollo: {exercise.desarrollo}</p>
-                            <p>Dificultad: {exercise.dificultad}</p>
-                            <p>Solución: {exercise.solucion}</p>
                           </div>
                         </div>
                       </div>

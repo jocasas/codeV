@@ -1,6 +1,5 @@
-import { ParticlesBackground } from "../Components/ParticleBg/ParticlesBackground";
+import { ParticlesBackground } from "../components/ParticleBg/ParticlesBackground";
 import "./page.css";
-
 
 export default function Home() {
   return (
