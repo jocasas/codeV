@@ -18,5 +18,15 @@
     "id": 4,
     "user": "quesopleto@gmial.com",
     "pass": "$2b$10$ZcXSiOopmoAXERYaN77fR.fyNVamzh5Uiya/7ILgeyDE0yZ1mFzVK"
+  },
+  {
+    "id": 5,
+    "user": "test@test.cl",
+    "pass": "$2b$10$B5J2vwN0x011K6Iea/leLeSdw.2JVKuzLyHy3XSPaZa7bL9DVnZYi"
+  },
+  {
+    "id": 6,
+    "user": "test2@test.cl",
+    "pass": "$2b$10$8AO6mcb4dzDx2pygA8We6uVE31kTUbrrCLabm9yY4YPnl6zuoHwu6"
   }
 ]

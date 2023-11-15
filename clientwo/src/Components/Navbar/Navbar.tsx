@@ -44,13 +44,10 @@ export function Navbar() {
           </Link>
         </div>
         <div className="space-x-5 h-full items-center flex">
-          <Link href="/login" className="button-49" role="button">
+          <Link href="/login" className="button101" role="button">
             Log In
           </Link>
-          <Link
-            href="/register"
-            className="text-white border-2 border-gray-700 px-5 py-2 rounded-md font-semibold hover:bg-red-950 bg-red-900 red"
-          >
+          <Link href="/register" className="button102">
             Sign In
           </Link>
         </div>
