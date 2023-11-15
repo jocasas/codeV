@@ -26,7 +26,7 @@ function App() {
             value={codeString}
             name="code-editor"
             editorProps={{ $blockScrolling: true }}
-            style={{ width: "100%" }}
+            style={{ width: "100%", height: "400px" }}
             showPrintMargin={false}
             fontSize={16}
           />

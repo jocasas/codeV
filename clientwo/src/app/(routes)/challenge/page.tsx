@@ -107,59 +107,54 @@ export default function Page() {
   return (
     <div className="Main">
       <div>
-        <h1>aaa</h1>
-        <div className="mt-10">
-          {Object.entries(exercisesByLanguage).map(
-            ([languageId, exercises]) => (
-              <div className="text-gray-300" key={languageId}>
-                <div className="bg-black">
-                  <div className="text-center">
-                    <pre
-                      className="text-rose-600		"
-                      dangerouslySetInnerHTML={{
-                        __html: asciiart[languageId as keyof AsciiArt] || "",
-                      }}
-                    />
-                  </div>
-                </div>
-                <ul>
-                  {exercises.map((exercise) => (
-                    <li key={exercise.id}>
-                      <div className="p-1">
-                        <h1 className="bg-zinc-950 text-neutral-950">
-                          <span style={{ color: "#00ff00" }}>
-                            guest@codev.editor.com:
-                          </span>
-                          <span style={{ color: "#02198B" }}> ~</span>
-                          <span style={{ color: "#ffffff" }}>$ </span>
-                          <span style={{ color: "#ffffff" }}> cat </span>
-
-                          <span style={{ color: "#ffffff" }}>
-                            {" "}
-                            {getPrefixedTitle(exercise)}{" "}
-                          </span>
-                        </h1>
-                        <div>
-                          <div className="m-2 bg-zinc-950 p-2">
-                            <p>{exercise.contexto}</p>
-                            <Link
-                              href="/[problem]"
-                              as={"/" + exercise.id.toString()}
-                              className="font-bold"
-                            >
-                              Abrir con el editor ¿{" "}
-                              <span style={{ color: "#00FFFF" }}>[y/n]</span> ?
-                            </Link>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
+        {Object.entries(exercisesByLanguage).map(([languageId, exercises]) => (
+          <div className="text-gray-300" key={languageId}>
+            <div className="pt-10 pb-10 bg-black">
+              <div className="text-center">
+                <pre
+                  className="text-rose-600		"
+                  dangerouslySetInnerHTML={{
+                    __html: asciiart[languageId as keyof AsciiArt] || "",
+                  }}
+                />
               </div>
-            )
-          )}
-        </div>
+            </div>
+            <ul>
+              {exercises.map((exercise) => (
+                <li key={exercise.id}>
+                  <div className="p-1">
+                    <h1 className="bg-zinc-950 text-neutral-950">
+                      <span style={{ color: "#00ff00" }}>
+                        guest@codev.editor.com:
+                      </span>
+                      <span style={{ color: "#02198B" }}> ~</span>
+                      <span style={{ color: "#ffffff" }}>$ </span>
+                      <span style={{ color: "#ffffff" }}> cat </span>
+
+                      <span style={{ color: "#ffffff" }}>
+                        {" "}
+                        {getPrefixedTitle(exercise)}{" "}
+                      </span>
+                    </h1>
+                    <div>
+                      <div className="m-2 bg-zinc-950 p-2">
+                        <p>{exercise.contexto}</p>
+                        <Link
+                          href="/[problem]"
+                          as={"/" + exercise.id.toString()}
+                          className="font-bold"
+                        >
+                          Abrir con el editor ¿{" "}
+                          <span style={{ color: "#00FFFF" }}>[y/n]</span> ?
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
       </div>
     </div>
   );

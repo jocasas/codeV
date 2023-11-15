@@ -33,58 +33,57 @@ export default function Page() {
   };
   return (
     <section>
-      {" "}
-      <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-      <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-      <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-      <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-      <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-      <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-      <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-      <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-      <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-      <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-      <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-      <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-      <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-      <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-      <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-      <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-      <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-      <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-      <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-      <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-      <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-      <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-      <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-      <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-      <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-      <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-      <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-      <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-      <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-      <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-      <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-      <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-      <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-      <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-      <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-      <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-      <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-      <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-      <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-      <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-      <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-      <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-      <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-      <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-      <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-      <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-      <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-      <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-      <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-      <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-      <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
       <span></span> <span></span> <span></span> <span></span> <span></span>
       <div className="signin">
         <div className="content">
@@ -103,8 +102,7 @@ export default function Page() {
               <input type="password" name="password" required /> <i>Password</i>
             </div>
             <div className="links">
-              {" "}
-              <Link href="#">Forgot Password</Link>{" "}
+              <Link href="#">Forgot Password</Link>
               <Link href="/register">Signup</Link>
             </div>
             <div className="inputBox">

@@ -22,14 +22,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
-  // Lista de rutas donde NO se mostrará el Navbar
   const noNavbarRoutes = ["/login", "/register"];
   const shouldRenderNavbar = !noNavbarRoutes.includes(pathname);
 
   return (
-    <html lang="en" className=" bg-neutral-900">
-      <body className={` h-screen ${roboto.className}`}>
-        <header>{shouldRenderNavbar ? <Navbar /> : null}</header>
+    <html lang="en" className="bg-neutral-900">
+      <head>
+        {/* Include any head elements like meta tags or stylesheets here */}
+      </head>
+
+      <body className={`h-screen ${roboto.className}`}>
+        <header>{shouldRenderNavbar && <Navbar />}</header>
         {children}
       </body>
     </html>

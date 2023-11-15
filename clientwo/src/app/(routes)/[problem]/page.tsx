@@ -8,14 +8,17 @@ export default function Page({ params }: { params: { problem: string } }) {
   }, []);
 
   return (
-    <div className="Main">
-      <h1>aaa</h1>
-      <div className="">
-        <div className=" text-gray-300">Problema Id: {params.problem}</div>
-        <div className="mt-10">
-          <AceEditor />
+    <section>
+      <div>
+        <div className=" bg-blue-50">
+          <div className=" text-gray-300">
+            <h1 className="text-center">Problema Id: {params.problem}</h1>
+          </div>
+          <div className="">
+            <AceEditor />
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
