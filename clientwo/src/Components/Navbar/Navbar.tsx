@@ -4,7 +4,7 @@ import "./styles.css"; // Import the CSS file
 
 export function Navbar() {
   return (
-    <div className="bg-black border-b-[1px] border-none w-full h-20 px-4 items-center">
+    <div className="absolute top-0 bg-black border-b-[1px] border-none w-full h-20 px-4 items-center">
       <div className="flex justify-between w-full h-full">
         <div className="flex items-center">
           <h1 className="text-white text-3xl font-bold ml-2">
