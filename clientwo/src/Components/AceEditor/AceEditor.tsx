@@ -3,8 +3,15 @@ import AceEditor from "react-ace";
 import "ace-builds/src-noconflict/mode-python";
 import "ace-builds/src-noconflict/theme-terminal"; // You can choose a different theme
 
-function App() {
+interface AppProps {
+  param1: string;
+  param2: string;
+}
+
+function App({ param1, param2 }: AppProps) {
   const [codeString, setCodeString] = useState("print('aa')");
+  console.log("param1:", param1);
+  console.log("param2:", param2);
 
   const handleCodeChange = (newCode: React.SetStateAction<string>) => {
     setCodeString(newCode);
@@ -15,8 +22,8 @@ function App() {
       <div className="pr-10 pl-10 flex flex-col sm:flex-row">
         <div className="flex-1 p-2 rounded overflow-auto bg-black text-white border-8 border-black">
           {/* Another div parallel to the editor */}
-          <h2 className="text-center">Problema</h2>
-          <p>Content of the new pane...</p>
+          <h2 className="text-green-500 text-center">{param1}</h2>
+          <p className="text-center">{param2}</p>
         </div>
         <div className="border-8 border-black rounded flex-1 ml-2 mb-2 sm:mb-0">
           <AceEditor

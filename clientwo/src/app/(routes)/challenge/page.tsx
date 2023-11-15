@@ -1,50 +1,10 @@
 "use client";
 import axios from "axios";
-import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { asciiart, AsciiArt } from "./asciiart";
+import { Exercise, getPrefixedTitle } from "./challenge";
 // `app/page.tsx` is the UI for the `/` URL
-
-interface Exercise {
-  titulo: string;
-  contexto: string;
-  instrucciones: string;
-  desarrollo: string;
-  dificultad: number;
-  id: number;
-  idLenguaje: string;
-  solucion: string;
-}
-
-type AsciiArt = {
-  python: string;
-  sql: string;
-};
-
-const asciiart: AsciiArt = {
-  python: `
-              __    __                         
-             /\\ \\__/\\ \\                        
-_____   __  __\\ \\ ,_\\ \\ \\___     ___     ___    
-/\\ '__\`\\/\\ \\/\\ \\\\ \\ \\/\\ \\  _ \`\\  / __\`\\ /' _ \`\\  
-\\ \\ \\L\\ \\ \\ \\_\\ \\\\ \\ \\_\\ \\ \\ \\ \\/\\ \\L\\ \\/\\ \\/\\ \\ 
-\\ \\ ,__/\\/\\____ \\\\ \\__\\\\ \\_\\ \\_\\ \\____/\\ \\_\\ \\_\\
-\\ \\ \\/  \`/___/> \\\\/__/ \\/_/\\/_/\\/__ /  \\/_/\\/_/
- \\ \\_\\     /\\___/                              
-\\/_/      \\/__/                             
- `,
-
-  sql: `
-  ________  ________  ___          
-  |\\   ____\\|\\   __  \\|\\  \\         
-  \\ \\  \\___|\\ \\  \\|\\  \\ \\  \\        
-   \\ \\_____  \\ \\  \\\\\\  \\ \\  \\       
-    \\|____|\\  \\ \\  \\\\\\  \\ \\  \\____  
-      ____\\_\\  \\ \\_____  \\ \\_______\\
-     |\\_________\\|___| \\__\\|_______|
-     \\|_________|     \\|__|         
- `,
-};
 
 export default function Page() {
   //H00KS
@@ -79,30 +39,6 @@ export default function Page() {
   useEffect(() => {
     showExercise();
   }, []);
-
-  useEffect(() => {
-    if (exercises.length > 0) {
-      console.log("Exercises updated:", exercises);
-    }
-  }, [exercises]);
-
-  function getPrefixedTitle(exercise: Exercise): string {
-    const formattedTitle = exercise.titulo.replace(/\s+/g, "_");
-    const suffix = getSuffix(exercise.idLenguaje);
-    return `${formattedTitle}${suffix}`;
-  }
-
-  function getSuffix(languageId: string): string {
-    switch (languageId) {
-      case "python":
-        return ".py";
-      case "sql":
-        return ".sql";
-      // Add more cases for other languages if needed
-      default:
-        return ".txt"; // Default case, use '.txt' as suffix
-    }
-  }
 
   return (
     <div className="Main">

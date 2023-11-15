@@ -28,6 +28,7 @@ class Server {
     //ENDPOINTS Ejercicios
     this.app.get("/apiGeRandomExcercise", this.getRandomExercise.bind(this));
     this.app.get("/apiGetAllExercises", this.getAllExercises.bind(this));
+    this.app.get("/apiGetSpefExercise", this.getSpefExercise.bind(this));
 
     if (process.env.NODE_ENV !== "test") {
       this.app.listen(this.port, () => {
@@ -217,9 +218,6 @@ class Server {
   }
 
   getAllExercises(req, res) {
-    const language = req.query.language;
-    const difficult = parseInt(req.query.difficult); //El valor al ser pasado quedo como un str
-
     const dataFilePath = "data/exercises.json";
     let exDatas = [];
 
@@ -232,6 +230,25 @@ class Server {
 
     //Devolver el ejercicio
     res.status(200).send({ exercise: exDatas });
+  }
+
+  getSpefExercise(req, res) {
+    const key1 = req.query.key1;
+    const dataFilePath = "data/exercises.json";
+    let exDatas = [];
+
+    try {
+      exDatas = JSON.parse(fs.readFileSync(dataFilePath, "utf8"));
+    } catch (error) {
+      return res.status(500).send("error al rescatar los ejercicios");
+    }
+
+    let exSpef = exDatas.filter((exData) => exData.id === parseInt(key1, 10));
+    console.log(exSpef);
+
+    res
+      .status(200)
+      .send({ message: "Se rescato el ejercicio", exercise: exSpef });
   }
 }
 
