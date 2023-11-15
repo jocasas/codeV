@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import "./styles.css"; // Import the CSS file
 
 export function Navbar() {
   return (
@@ -43,10 +44,7 @@ export function Navbar() {
           </Link>
         </div>
         <div className="space-x-5 h-full items-center flex">
-          <Link
-            href="/login"
-            className="text-white border-2 border-gray-700 px-5 py-2 rounded-md font-semibold hover:bg-gray-300 hover:text-black"
-          >
+          <Link href="/login" className="button-49" role="button">
             Log In
           </Link>
           <Link
