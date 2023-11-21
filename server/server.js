@@ -170,6 +170,7 @@ class Server {
         fs.unlinkSync("temp.py");
 
         if (error) {
+          console.log(error.message);
           res.status(500).json({ error: error.message });
         } else {
           if (process.env.NODE_ENV !== "test") {
