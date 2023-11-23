@@ -1,3 +1,4 @@
+import Ranking from "@/components/Ranking/Ranking";
 import { ParticlesBackground } from "../components/ParticleBg/ParticlesBackground";
 import "./page.css";
 
@@ -47,7 +48,7 @@ export default function Home() {
         </div>
         <div className="ranking-ranges">
           <div className="card-content">
-            aqui va el ranking quiza o algo asi
+            <Ranking></Ranking>
           </div>
         </div>
       </div>
