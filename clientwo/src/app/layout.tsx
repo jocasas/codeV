@@ -1,7 +1,7 @@
 "use client";
 import type { Metadata } from "next";
 import "./globals.css";
-import { Navbar } from "../components/Navbar/Navbar";
+import { Navbar } from "../Components/Navbar/Navbar";
 import { Roboto } from "next/font/google";
 import { usePathname } from "next/navigation";
 
@@ -31,8 +31,8 @@ export default function RootLayout({
         {/* Include any head elements like meta tags or stylesheets here */}
       </head>
 
-      <body className={`h-screen ${roboto.className}`}>
-        <header>{shouldRenderNavbar && <Navbar />}</header>
+      <body className={`calc(h-screen-h-20) ${roboto.className}`}>
+        <header className="mt-[80px]">{shouldRenderNavbar && <Navbar />}</header>
         {children}
       </body>
     </html>

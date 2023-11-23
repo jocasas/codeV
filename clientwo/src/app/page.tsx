@@ -1,5 +1,5 @@
-import Ranking from "@/components/Ranking/Ranking";
-import { ParticlesBackground } from "../components/ParticleBg/ParticlesBackground";
+import Ranking from "@/Components/Ranking/Ranking";
+import { ParticlesBackground } from "../Components/ParticleBg/ParticlesBackground";
 import "./page.css";
 
 export default function Home() {
@@ -44,12 +44,9 @@ export default function Home() {
       </div>
       <div className="ranking-info">
         <div className="example-editor">
-          <h3>Pruebalo!</h3>
         </div>
         <div className="ranking-ranges">
-          <div className="card-content">
-            <Ranking></Ranking>
-          </div>
+            <Ranking/>
         </div>
       </div>
       <div className="slide-info-2">Aqui va info 2</div>

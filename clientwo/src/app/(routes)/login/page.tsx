@@ -1,6 +1,6 @@
 "use client";
+
 import React, { FormEvent } from "react";
-import { ParticlesBackground } from "../../../components/ParticleBg/ParticlesBackground";
 import axios from "axios";
 import "./login.css";
 import Link from "next/link";

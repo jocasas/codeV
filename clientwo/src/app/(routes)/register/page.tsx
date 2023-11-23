@@ -1,6 +1,6 @@
 "use client";
+
 import React from "react";
-import { ParticlesBackground } from "../../../components/ParticleBg/ParticlesBackground";
 import axios from "axios";
 import Link from "next/link";
 import "./register.css";

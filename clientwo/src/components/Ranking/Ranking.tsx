@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 
 const Ranking = () => {
@@ -50,10 +51,6 @@ const Ranking = () => {
 
     return (
 
-        <div className="flex flex-col">
-            <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
-                <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                    <div className="shadow overflow-hidden sm:rounded-lg">
                         <table className="min-w-full text-sm text-gray-400">
                             <thead className="bg-neutral-800 text-xs uppercase font-medium">
                                 <tr>
@@ -87,27 +84,23 @@ const Ranking = () => {
                                                 <div className="text-sm text-gray-400">{user.name}</div>
                                             </div>
                                         </td>
-                                        <td className="px-6 py-4 whitespace-nowrap">
+                                        <td className="px-6 py-4 text-center whitespace-nowrap">
                                             <div className="text-sm text-gray-400">{user.score}</div>
                                         </td>
-                                        <td className="px-6 py-4 whitespace-nowrap">
+                                        <td className="px-6 py-4 text-center whitespace-nowrap">
                                             <div className="text-sm text-gray-400">{user.solved}</div>
                                         </td>
-                                        <td className="px-6 py-4 whitespace-nowrap">
+                                        <td className="px-6 py-4 text-center whitespace-nowrap">
                                             <div className="text-sm text-gray-400">{user.favLang}</div>
                                         </td>
                                         <td className="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
-                                            <a href="#" className="text-indigo-600 hover:text-indigo-900">Ver perfil</a>
+                                            <Link href="/" className="text-indigo-600 hover:text-indigo-900">Ver perfil</Link>
                                         </td>
                                     </tr>
                                 ))}
                             </tbody>
                         </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    )
+                        )
 }
 
 export default Ranking

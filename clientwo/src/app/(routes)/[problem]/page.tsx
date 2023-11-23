@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import AceEditor from "../../../components/AceEditor/AceEditor";
+import AceEditor from "../../../Components/AceEditor/AceEditor";
 import axios from "axios";
 import { Exercise } from "./challenge";
 
