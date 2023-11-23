@@ -22,7 +22,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
-  const noNavbarRoutes = ["/login", "/register"];
+  const noNavbarRoutes = ["/login", "/register", "/testing"];
   const shouldRenderNavbar = !noNavbarRoutes.includes(pathname);
 
   return (
