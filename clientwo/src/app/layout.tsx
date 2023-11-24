@@ -31,7 +31,7 @@ export default function RootLayout({
         {/* Include any head elements like meta tags or stylesheets here */}
       </head>
 
-      <body className={`calc(h-screen-h-20) ${roboto.className}`}>
+      <body className={`h-[calc(100vh-80px)] ${roboto.className}`}>
         <header className="mt-[80px]">{shouldRenderNavbar && <Navbar />}</header>
         {children}
       </body>

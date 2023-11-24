@@ -1,11 +1,18 @@
+'use client'
 import Ranking from "@/Components/Ranking/Ranking";
-import { ParticlesBackground } from "../Components/ParticleBg/ParticlesBackground";
 import "./page.css";
+import dynamic from "next/dynamic";
+import { ComponentType } from "react";
+
+
+const DynamicParticle : ComponentType<{}> = dynamic(
+  () => import("@/Components/ParticleBg/ParticlesBackground").then((mod) => mod.ParticlesBackground));
 
 export default function Home() {
+
   return (
     <div className="Main">
-      <ParticlesBackground />
+      <DynamicParticle/>
       <div className="absolute bg-gradient-to-b from-black via-black to-neutral-900 w-full h-[50%]"></div>
       <div className="Slogan">Aqui va el Slogan</div>
       <div className="slide-info-1">
