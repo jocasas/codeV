@@ -1,24 +1,32 @@
-import { ParticlesBackground } from "../components/ParticleBg/ParticlesBackground";
+"use client";
+import Ranking from "@/components/Ranking/Ranking";
 import "./page.css";
 import "./styles.css"; // Import the CSS file
-import Link from 'next/link'
+import Link from "next/link";
+import dynamic from "next/dynamic";
+import { ComponentType } from "react";
+
+const DynamicParticle: ComponentType<{}> = dynamic(() =>
+  import("@/components/ParticleBg/ParticlesBackground").then(
+    (mod) => mod.ParticlesBackground
+  )
+);
 
 export default function Home() {
   return (
     <div className="Main">
-      <ParticlesBackground />
+      <DynamicParticle />
       <div className="absolute bg-gradient-to-b from-black via-black to-neutral-900 w-full h-[50%]"></div>
       <div className="Slogan">Formando Gente Generando Competencia</div>
-      <div className='text-center'>          
-          <Link href="/login" className="button101" role="button">
-            Log In
-          </Link>
-          <Link href="/register" className="button102">
-            Sign In
-          </Link>
+      <div className="text-center">
+        <Link href="/login" className="button101" role="button">
+          Log In
+        </Link>
+        <Link href="/register" className="button102">
+          Sign In
+        </Link>
       </div>
       <div className="slide-info-1">
-
         <div className="card1-container">
           <div className="circle"></div>
           <div className="circle"></div>
@@ -53,13 +61,9 @@ export default function Home() {
         </div>
       </div>
       <div className="ranking-info">
-        <div className="example-editor">
-          <h3>Pruebalo!</h3>
-        </div>
+        <div className="example-editor"></div>
         <div className="ranking-ranges">
-          <div className="card-content">
-            aqui va el ranking quiza o algo asi
-          </div>
+          <Ranking />
         </div>
       </div>
       <div className="slide-info-2">Aqui va info 2</div>

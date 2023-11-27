@@ -4,13 +4,13 @@ import "./styles.css"; // Import the CSS file
 
 export function Navbar() {
   return (
-    <div className="absolute top-0 bg-black border-b-[1px] border-none w-full h-20 px-4 items-center">
+    <nav className="flex-no-wrap flex fixed top-0 bg-black border-b-[1px] border-none w-full h-20 px-4 items-center z-50">
       <div className="flex justify-between w-full h-full">
-        <div className="flex items-center">
+        <a href="/" className="flex items-center">
           <h1 className="text-white text-3xl font-bold ml-2">
-            <span className="text-cyan-300">//</span>CodeVerse
+            <span className="text-cyan-300 text-4xl">//</span>CodeVerse
           </h1>
-        </div>
+        </a>
         <div className="flex items-center space-x-5">
           <Link
             href="/"
@@ -46,6 +46,6 @@ export function Navbar() {
         <div className="space-x-5 h-full items-center flex">
         </div>
       </div>
-    </div>
+    </nav>
   );
 }
