@@ -1,13 +1,24 @@
 import { ParticlesBackground } from "../components/ParticleBg/ParticlesBackground";
 import "./page.css";
+import "./styles.css"; // Import the CSS file
+import Link from 'next/link'
 
 export default function Home() {
   return (
     <div className="Main">
       <ParticlesBackground />
       <div className="absolute bg-gradient-to-b from-black via-black to-neutral-900 w-full h-[50%]"></div>
-      <div className="Slogan">Aqui va el Slogan</div>
+      <div className="Slogan">Formando Gente Generando Competencia</div>
+      <div className='text-center'>          
+          <Link href="/login" className="button101" role="button">
+            Log In
+          </Link>
+          <Link href="/register" className="button102">
+            Sign In
+          </Link>
+      </div>
       <div className="slide-info-1">
+
         <div className="card1-container">
           <div className="circle"></div>
           <div className="circle"></div>

@@ -44,12 +44,6 @@ export function Navbar() {
           </Link>
         </div>
         <div className="space-x-5 h-full items-center flex">
-          <Link href="/login" className="button101" role="button">
-            Log In
-          </Link>
-          <Link href="/register" className="button102">
-            Sign In
-          </Link>
         </div>
       </div>
     </div>
