@@ -3,6 +3,8 @@ import AceEditor from "react-ace";
 import "ace-builds/src-noconflict/mode-python";
 import "ace-builds/src-noconflict/theme-terminal"; // You can choose a different theme
 import axios from "axios";
+import { usePathname } from 'next/navigation'
+
 
 interface AppProps {
   param1: string;
@@ -14,6 +16,8 @@ function App({ param1, param2 }: AppProps) {
   const [codeResponse, setCodeResponse] = useState("");
   console.log("param1:", param1);
   console.log("param2:", param2);
+
+  const pathname = usePathname()
 
   const handleCodeChange = (newCode: React.SetStateAction<string>) => {
     setCodeString(newCode);
@@ -31,11 +35,11 @@ function App({ param1, param2 }: AppProps) {
     }
   };
 
-  return (
-    <div>
-      <div className="pr-10 pl-10 flex flex-col sm:flex-row">
+
+  const challengeEditor = (
+  <div>     
+    <div className="pr-10 pl-10 flex flex-col sm:flex-row">
         <div className="flex-1 p-2 rounded overflow-auto bg-black text-white border-8 border-black">
-          {/* Another div parallel to the editor */}
           <h2 className="text-green-500 text-center">{param1}</h2>
           <p className="text-center">{param2}</p>
           <div className="text-center">
@@ -58,10 +62,8 @@ function App({ param1, param2 }: AppProps) {
           />
         </div>
       </div>
-      {/* New pane below the parallel panes */}
       <div className="pr-10 pl-10 flex flex-col sm:flex-row">
         <div className="flex-1 mt-2 pb-40 rounded overflow-auto bg-black text-white border-8 border-black">
-          {/* Another div parallel to the editor */}
           <h1 className="text-gray-50 text-center">Output</h1>
           <p className="text-green-400">$ Your terminal-like text here...</p>
           <p className="text-gray-300">Output: Something cool!</p>
@@ -72,6 +74,11 @@ function App({ param1, param2 }: AppProps) {
           </div>
         </div>
       </div>
+      </div>);
+
+  return (
+    <div>
+     <div>{challengeEditor}</div> 
     </div>
   );
 }
