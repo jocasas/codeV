@@ -2,7 +2,7 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { gruvboxDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import hljs from "highlight.js";
 hljs.registerLanguage("python", require("highlight.js/lib/languages/python"));
-import { SetStateAction, useState, useRef } from "react";
+import { SetStateAction, useState } from "react";
 
 function App() {
   const [codeString, setCodeString] = useState("print('aa')");
