@@ -1,6 +1,6 @@
 "use client";
 import Ranking from "@/components/Ranking/Ranking";
-import HomeEditor from "@/components/AceEditor/HomeEditor"
+import HomeEditor from "@/components/AceEditor/HomeEditor";
 import "./page.css";
 import Link from "next/link";
 import dynamic from "next/dynamic";
@@ -13,8 +13,6 @@ const DynamicParticle: ComponentType<{}> = dynamic(() =>
 );
 
 export default function Home() {
-  
-
   return (
     <div className="Main">
       <DynamicParticle />
@@ -56,7 +54,11 @@ export default function Home() {
       </div>
 
       <div className="ranking-info">
-        <div className="example-editor"><HomeEditor/></div>
+        <div className="example-editor">
+          <div className="bg-blue-500 h-full w-full">
+            <HomeEditor />
+          </div>
+        </div>
         <div className="ranking-ranges">
           <Ranking />
         </div>
