@@ -36,14 +36,11 @@ function App({ param1, param2 }: AppProps) {
 
   const challengeEditor = (
     <div>
-      <div className="pr-10 pl-10 flex flex-col sm:flex-row">
+      <div className="pr-10 pl-10 flex flex-col sm:flex-row w-full h-full">
         <div className="flex-1 p-2 rounded overflow-auto bg-black text-white border-8 border-black">
-          <h2 className="text-green-500 text-center">{param1}</h2>
-          <p className="text-center">{param2}</p>
-          <div className="text-center">
-            <button onClick={onSubmitClick} className="bg-blue-800">
-              submit
-            </button>
+          <div className="bg-blue-900 w-full h-full">
+            <h2 className="text-green-500 text-center">{param1}</h2>
+            <p className="text-center">{param2}</p>
           </div>
         </div>
         <div className="border-8 border-black rounded flex-1 ml-2 mb-2 sm:mb-0">
@@ -63,6 +60,11 @@ function App({ param1, param2 }: AppProps) {
       <div className="pr-10 pl-10 flex flex-col sm:flex-row">
         <div className="flex-1 mt-2 pb-40 rounded overflow-auto bg-black text-white border-8 border-black">
           <h1 className="text-gray-50 text-center">Output</h1>
+          <div className="text-center">
+            <button onClick={onSubmitClick} className="bg-blue-800">
+              submit
+            </button>
+          </div>
           <p className="text-green-400">$ [ Esperando una orden ]. . . . .</p>
           <div>
             <pre>
